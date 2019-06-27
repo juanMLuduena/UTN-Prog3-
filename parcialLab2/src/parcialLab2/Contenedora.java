@@ -6,6 +6,9 @@ public class Contenedora<E extends Persona> {
 	
 	private ArrayList<E> contenedor = null;
 	
+	public Contenedora() {
+		contenedor=new ArrayList<E>();
+	}
 	public void agregar(E aux) {
 		contenedor.add(aux);
 	}

@@ -11,7 +11,7 @@ public class Federacion {
 	private Contenedora<Persona> miembros;
 
 	private final int MAX_ENTRENADOR = 1;
-	private final int MAX_FUTBOLISTA = 23;
+	private final int MAX_FUTBOLISTA = 4;
 
 	public Federacion() {
 		nombre = " ";
@@ -58,13 +58,13 @@ public class Federacion {
 	 * @throws FutbolistaException si ya hay demasiados
 	 * @throws EntrenadorException si ya hay demasiados
 	 */
-	public String agregar(Persona p) throws FutbolistaException, EntrenadorException {
+	public String agregar(Persona p) {
 
 		String rta;
 		try {
 			if (p instanceof Futbolista) { // aca creo que puedo hacer un switch y se va a ver mejor
 
-				if (MAX_FUTBOLISTA > miembros.contarClase(p)) {
+				if (MAX_FUTBOLISTA >= miembros.contarClase(p)) {
 					miembros.agregar(p);
 					rta = "Futbolista agregado!";
 				} else {
@@ -73,7 +73,7 @@ public class Federacion {
 
 			} else {
 				if (p instanceof Entrenador) {
-					if (MAX_ENTRENADOR > miembros.contarClase(p)) {
+					if (MAX_ENTRENADOR >= miembros.contarClase(p)) {
 						miembros.agregar(p);
 						rta = "Entrenador agregado!";
 					} else {
@@ -112,7 +112,7 @@ public class Federacion {
 	 * 
 	 * @return un arreglo JSON de futbolistas
 	 */
-	public JSONArray jsonArrayFutbolista() {
+	public JSONArray jsonArrayFutbolista() throws JSONException{
 		int i = 0;
 		JSONArray ja = new JSONArray();
 
@@ -129,7 +129,7 @@ public class Federacion {
 	 * 
 	 * @return un arreglo JSON de entrenadores
 	 */
-	public JSONArray jsonArrayEntrenador() {
+	public JSONArray jsonArrayEntrenador() throws JSONException{
 		int i = 0;
 		JSONArray ja = new JSONArray();
 		for (i = 0; i < miembros.getSize(); i++) {
@@ -144,7 +144,7 @@ public class Federacion {
 	 * 
 	 * @return un arreglo JSON de ayudantes de campo
 	 */
-	public JSONArray jsonArrayAyudanteCampo() {
+	public JSONArray jsonArrayAyudanteCampo() throws JSONException{
 		int i = 0;
 		JSONArray ja = new JSONArray();
 		for (i = 0; i < miembros.getSize(); i++) {
@@ -159,7 +159,7 @@ public class Federacion {
 	 * 
 	 * @return un arreglo JSON de masajistas
 	 */
-	public JSONArray jsonArrayMasajista() {
+	public JSONArray jsonArrayMasajista() throws JSONException{
 		int i = 0;
 		JSONArray ja = new JSONArray();
 		for (i = 0; i < miembros.getSize(); i++) {
@@ -175,12 +175,15 @@ public class Federacion {
 	 * 
 	 * @return JsonArray de miembros
 	 */
-	public JSONArray jsonArrayMiembros() {
+	public JSONArray jsonArrayMiembros() throws JSONException{
 		JSONArray ja = new JSONArray();
+		
 		ja.put(jsonArrayFutbolista());
 		ja.put(jsonArrayEntrenador());
 		ja.put(jsonArrayAyudanteCampo());
 		ja.put(jsonArrayMasajista());
+		
+	
 		return ja;
 	}
 
@@ -200,6 +203,7 @@ public class Federacion {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+		
 		return jo;
 	}
 }

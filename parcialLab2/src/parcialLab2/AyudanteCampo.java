@@ -43,14 +43,12 @@ public class AyudanteCampo extends Persona implements Ijugador, Ipreparador {
 		return getNombre() + " esta ayudando durante el partido!! ";
 	}
 
-	public JSONObject getJsonObject() {
+	public JSONObject getJsonObject() throws JSONException{
 		JSONObject jo = new JSONObject();
-		try {
+		
 			jo = super.getJsonObject();
 			jo.put("metodologia", metodologia);
-		} catch (JSONException e) {
-			e.getMessage();
-		}
+		
 		return jo;
 
 	}

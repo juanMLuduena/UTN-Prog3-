@@ -55,15 +55,13 @@ public class Entrenador extends Persona implements Ijugador, Ipreparador {
 		return getNombre() + " esta dirigiendo su equipo!!";
 	}
 
-	public JSONObject getJsonObject() {
+	public JSONObject getJsonObject() throws JSONException{
 		JSONObject jo = new JSONObject();
-		try {
+		
 			jo = super.getJsonObject();
 			jo.put("sistemaJuego", sistemaJuego);
 			jo.put("estilo", estilo);
-		} catch (JSONException e) {
-			e.getMessage();
-		}
+		
 		return jo;
 	}
 

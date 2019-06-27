@@ -45,15 +45,13 @@ public String asistir() {
 	return null;
 }
 
-public JSONObject getJsonObject() {
+public JSONObject getJsonObject() throws JSONException{
 	JSONObject jo = new JSONObject();
-	try {
+
 		jo = super.getJsonObject();
 		jo.put("titulo", titulo);
 		jo.put("exp",exp);
-	} catch (JSONException e) {
-		e.getMessage();
-	}
+	
 	return jo;
 }
 
