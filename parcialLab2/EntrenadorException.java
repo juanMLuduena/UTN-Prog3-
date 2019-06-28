@@ -1,4 +1,3 @@
-package parcialLab2;
 /**
  * Excepcion para problemas con entrenadores
  * @author bianca

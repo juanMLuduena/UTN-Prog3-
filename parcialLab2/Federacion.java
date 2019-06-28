@@ -1,5 +1,3 @@
-package parcialLab2;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -101,11 +99,11 @@ public class Federacion {
 
 	public String toString() {
 		return nombre + "Año fundacion: " + fechaFundacion + ". Copas: " + cantCopas + ".\nPlantel: \n"
-				+ miembros.toString();
+				+ miembros.listar();
 	}
 
 	public String listar() {
-		return miembros.toString();
+		return miembros.listar();
 	}
 
 	/**

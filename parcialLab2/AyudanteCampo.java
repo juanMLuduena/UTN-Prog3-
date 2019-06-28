@@ -1,5 +1,3 @@
-package parcialLab2;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 

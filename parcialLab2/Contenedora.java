@@ -1,5 +1,3 @@
-package parcialLab2;
-
 import java.util.ArrayList;
 
 public class Contenedora<E extends Persona> {
